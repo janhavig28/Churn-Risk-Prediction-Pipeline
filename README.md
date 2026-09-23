@@ -4,31 +4,40 @@ A machine learning project to predict whether a telecom customer is likely to ch
 
 ## Dataset
 
-Telco Customer Churn dataset (7,043 customer records) with features like tenure, monthly charges, contract type, and the services they've subscribed to.
+Telco Customer Churn dataset with 7,043 customer records and features such as tenure, monthly charges, contract type, and subscribed services.
 
-## What I did
+## What I Did
 
-- Cleaned the data (handled missing values in `TotalCharges`, dropped the customer ID column)
-- Did EDA — checked distributions, outliers, and correlations for numerical features, and count plots for categorical ones
-- Encoded categorical columns using Label Encoding
-- The target column (`Churn`) was imbalanced, so I used SMOTE to balance the training data
-- Trained and compared three models: Decision Tree, Random Forest, and XGBoost
-- Tuned both Random Forest and XGBoost using RandomizedSearchCV — their tuned performance came out nearly identical, so I went with Random Forest
-- Adjusted the classification threshold (0.35 instead of the default 0.5) to improve recall, since catching customers who are about to churn matters more than overall accuracy
-- Used SHAP to understand which features were driving the model's predictions
-- Saved the trained model and encoders as pickle files, and tested it on a sample input
+- Cleaned the data by handling missing values in `TotalCharges` and dropping the customer ID column.
+- Performed EDA to analyze distributions, outliers, correlations, and categorical feature frequencies.
+- Encoded categorical columns using Label Encoding.
+- Addressed class imbalance in the `Churn` target using SMOTE on the training data.
+- Trained and compared three models: Decision Tree, Random Forest, and XGBoost.
+- Tuned Random Forest and XGBoost using `RandomizedSearchCV`. Their tuned performance was nearly identical, so Random Forest was selected.
+- Adjusted the classification threshold from the default `0.5` to `0.35` to improve recall, since identifying customers likely to churn was prioritized over overall accuracy.
+- Used SHAP to understand which features contributed to the model's predictions.
+- Saved the trained model and encoders as pickle files and tested the model on a sample input.
 
-## Tech stack
+## Tech Stack
 
-- Python, pandas, numpy
-- scikit-learn, XGBoost, imbalanced-learn (SMOTE)
-- SHAP for explainability
-- matplotlib, seaborn for EDA
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- XGBoost
+- Imbalanced-learn (SMOTE)
+- SHAP
+- Matplotlib
+- Seaborn
 
 ## Results
 
-Random Forest gave the best cross-validation accuracy among the three models. After threshold tuning, recall on the churn class improved noticeably compared to the default 0.5 threshold.
+Random Forest achieved the best cross-validation accuracy among the three models.
+
+After threshold tuning, recall for the churn class improved compared with the default `0.5` threshold.
 
 ## Status
 
-Core model training, tuning, and explainability are done. Right now it's a notebook — no UI or deployment yet.
+Core model training, hyperparameter tuning, threshold optimization, and explainability are complete.
+
+The project is currently implemented as a Jupyter notebook. No UI or deployment has been added yet.
